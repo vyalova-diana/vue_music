@@ -68,7 +68,7 @@
 
 <script>
 import { ErrorMessage } from 'vee-validate'
-import { songsCollection, storage } from '@/includes/firebase'
+import { songsCollection, storage, commentsCollection, db } from '@/includes/firebase'
 export default {
   name: 'CompositionItem',
   components: { ErrorMessage },
@@ -137,7 +137,17 @@ export default {
 
       await songsCollection.doc(this.song.docID).delete()
 
+      this.deleteComments(this.song.docID)
+
       this.removeSong(this.index)
+    },
+    async deleteComments(songID) {
+      const batch = db.batch()
+      const snapshots = await commentsCollection.where('sid', '==', songID).get()
+      snapshots.forEach((doc) => {
+        batch.delete(doc.ref)
+      })
+      await batch.commit()
     }
   }
 }

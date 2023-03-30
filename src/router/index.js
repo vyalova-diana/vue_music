@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import ManageView from '@/views/ManageView.vue'
-import useUserStore from "@/stores/user"
+import useUserStore from '@/stores/user'
+import SongView from '@/views/SongView.vue'
 
 const routes = [
   {
@@ -33,6 +34,11 @@ const routes = [
   {
     path: '/:catchAll(.*)*',
     redirect: { name: 'home' }
+  },
+  {
+    name: 'song',
+    path: '/song/:id',
+    component: SongView
   }
 ]
 
@@ -48,13 +54,12 @@ router.beforeEach((to, from, next) => {
     return
   }
 
-  const store  =  useUserStore();
+  const store = useUserStore()
 
   if (store.userLoggedIn) {
     next()
-  }
-  else {
-    next({name: 'home'})
+  } else {
+    next({ name: 'home' })
   }
 })
 
