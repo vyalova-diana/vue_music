@@ -15,6 +15,9 @@ export default {
     }else {
         iconClass += ' text-green-400'
     }
-    el.innerHTML += `<i class="${iconClass}"></i>`
+    
+    let i = document.createElement('i');
+    i.className = `${iconClass}`
+    el.appendChild(i)
   }
 }
