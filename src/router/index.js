@@ -1,14 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '@/views/HomeView.vue'
-import ManageView from '@/views/ManageView.vue'
 import useUserStore from '@/stores/user'
-import SongView from '@/views/SongView.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: () => import('@/views/HomeView.vue')
   },
   {
     path: '/about',
@@ -22,7 +19,7 @@ const routes = [
     path: '/manage-music',
     name: 'manage',
     // alias: '/manage',
-    component: ManageView,
+    component: () => import('@/views/ManageView.vue'),
     meta: {
       requiresAuth: true
     }
@@ -38,7 +35,7 @@ const routes = [
   {
     name: 'song',
     path: '/song/:id',
-    component: SongView
+    component: () => import('@/views/SongView.vue')
   }
 ]
 
