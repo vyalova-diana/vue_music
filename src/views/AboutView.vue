@@ -9,6 +9,7 @@
             congue augue non, venenatis elit. Nunc justo eros, suscipit ac aliquet imperdiet,
             venenatis et sapien. Duis sed magna pulvinar, fringilla lorem eget, ullamcorper urna.
           </p>
+          <base-button />
         </div>
       </div>
     </section>
