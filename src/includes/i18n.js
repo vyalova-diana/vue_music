@@ -32,14 +32,14 @@ export default createI18n({
   numberFormats: {
     en: {
       currency: {
-        style: "currency",
-        currency: "USD",
+        style: 'currency',
+        currency: 'USD'
       }
     },
     ru: {
       currency: {
-        style: "currency",
-        currency: "RUB",
+        style: 'currency',
+        currency: 'RUB'
       }
     }
   }
